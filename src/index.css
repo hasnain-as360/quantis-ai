@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────────────────
+   Quantis AI — Design System
+   Industrial Black & Neon Yellow · Power Grotesk + Inter
+   ────────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Power Grotesk';
+  src: local('Power Grotesk'), local('PowerGrotesk'), local('Power Grotesk Regular'), local('Power Grotesk Bold');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Typography */
+  --font-accent: "Power Grotesk", "Space Grotesk", sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Space Grotesk", "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* Core palette */
+  --color-base: #030303;
+  --color-surface: #111111;
+  --color-surface-raised: #1A1A1A;
+  --color-surface-hover: #222222;
+
+  /* Borders: subtle rgba(255,255,255,0.08) */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.15);
+
+  /* Primary accent — Neon Yellow */
+  --color-neon: #FFF313;
+  --color-neon-hover: #E6DB11;
+  --color-neon-soft: rgba(255, 243, 19, 0.08);
+  --color-neon-glow: rgba(255, 243, 19, 0.25);
+  --color-neon-text: #030303;
+
+  /* Status palette */
+  --color-status-optimal: #22C55E;
+  --color-status-optimal-bg: rgba(34, 197, 94, 0.08);
+  --color-status-optimal-border: rgba(34, 197, 94, 0.25);
+
+  --color-status-hold: #06B6D4;
+  --color-status-hold-bg: rgba(6, 182, 212, 0.08);
+  --color-status-hold-border: rgba(6, 182, 212, 0.3);
+
+  --color-status-wash: #EF4444;
+  --color-status-wash-bg: rgba(239, 68, 68, 0.08);
+  --color-status-wash-border: rgba(239, 68, 68, 0.3);
+
+  /* Text */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #999999;
+  --color-text-muted: #555555;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    letter-spacing: -0.01em;
+  }
+
+  /* Headings use Power Grotesk accent font with tight tracking */
+  h1, h2, h3, h4, .font-heading {
+    font-family: var(--font-accent);
+    letter-spacing: -0.02em;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--color-base); }
+  ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+  /* Remove number spinners */
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] { -moz-appearance: textfield; }
+
+  /* Smooth anchor scrolling */
+  html { scroll-behavior: smooth; }
+}
+
+@layer utilities {
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .card-raised {
+    background-color: var(--color-surface-raised);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 0 0 rgba(255, 243, 19, 0);
+    transition: box-shadow 0.3s ease;
+  }
+  .neon-glow:hover {
+    box-shadow: 0 0 30px 2px rgba(255, 243, 19, 0.2),
+                0 0 60px 4px rgba(255, 243, 19, 0.08);
+  }
+
+  .text-balance { text-wrap: balance; }
+
+  .tracking-tight-header { letter-spacing: -0.02em; }
+
+  .tabular { font-variant-numeric: tabular-nums; font-family: var(--font-mono); }
+}
